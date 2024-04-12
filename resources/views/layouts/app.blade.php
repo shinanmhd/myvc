@@ -15,6 +15,7 @@
         <!-- Scripts -->
         @livewireStyles
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @stack('styles')
     </head>
     <body class="h-full" x-data="{ sidebar: false }">
 

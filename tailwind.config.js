@@ -4,7 +4,7 @@ import forms from '@tailwindcss/forms';
 /** @type {import('tailwindcss').Config} */
 export default {
     presets: [
-            require("./vendor/wireui/wireui/tailwind.config.js")
+        require("./vendor/wireui/wireui/tailwind.config.js")
     ],
 
     content: [

@@ -30,74 +30,74 @@
 
     <script type="application/javascript">
         document.addEventListener("DOMContentLoaded", () => {
-        const labels = ['Credits Achieved', 'Remaining Credits'];
-        const data = {
-            labels: labels,
-            datasets: [
-                {
-                    data: [40,60],
-                    backgroundColor: [
-                        'rgb(4, 83, 224)',
-                        'rgb(245, 245, 245)',
-                    ],
-                    hoverOffset: 4
-                }
-            ]
-        };
+            const labels = ['Credits Achieved', 'Remaining Credits'];
+            const data = {
+                labels: labels,
+                datasets: [
+                    {
+                        data: [40,60],
+                        backgroundColor: [
+                            'rgb(4, 83, 224)',
+                            'rgb(245, 245, 245)',
+                        ],
+                        hoverOffset: 4
+                    }
+                ]
+            };
 
-        const dataBar = {
-            type: 'doughnut',
-            data: data,
-            options: {
-                cutout: 80,
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        display: true,
-                        position: 'top',
-                        labels: {
-                            usePointStyle: true,
-                            boxWidth: 12,
-                            padding: 20
+            const dataBar = {
+                type: 'doughnut',
+                data: data,
+                options: {
+                    cutout: 80,
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top',
+                            labels: {
+                                usePointStyle: true,
+                                boxWidth: 12,
+                                padding: 20
+                            }
+                        },
+                        title: {
+                            display: false,
+                            text: 'Application conversion by Level'
                         }
                     },
-                    title: {
+                    x: {
                         display: false,
-                        text: 'Application conversion by Level'
-                    }
-                },
-                x: {
-                    display: false,
-                    title: {
-                        display: true
+                        title: {
+                            display: true
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Semester'
+                        }
                     },
-                    scaleLabel: {
-                        display: true,
-                        labelString: 'Semester'
-                    }
-                },
-                y: {
-                    display: false,
-                    title: {
-                        display: true,
-                        text: 'Value'
+                    y: {
+                        display: false,
+                        title: {
+                            display: true,
+                            text: 'Value'
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Semester'
+                        },
+                        suggestedMin: 0,
+                        /*suggestedMax: 200*/
                     },
-                    scaleLabel: {
-                        display: true,
-                        labelString: 'Semester'
+                    interaction: {
+                        intersect: true,
                     },
-                    suggestedMin: 0,
-                    /*suggestedMax: 200*/
+                    scales: false
                 },
-                interaction: {
-                    intersect: true,
-                },
-                scales: false
-            },
-        };
+            };
 
-        new window.Chart(document.getElementById('chart-by-week'), dataBar);
+            new window.Chart(document.getElementById('chart-by-week'), dataBar);
         });
     </script>
 </div>

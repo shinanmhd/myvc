@@ -59,4 +59,3 @@ This project was developed by Shinan Mohamed (UWE ID: 24019764) as part of the M
     * `nginx`: The Nginx web server container.
 * The application code is mounted as a volume (`./:/var/www`) to the `app` container, allowing for live code updates.
 * The MySQL database configuration is included in the `docker-compose.yml` file for simplicity. In a production environment, consider using a dedicated secrets management solution.
-* The `redis` and `mysql-data` volumes are commented out as they are not used in the provided configuration.
