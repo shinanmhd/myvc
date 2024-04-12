@@ -1,0 +1,56 @@
+version: "3.7"
+services:
+    app:
+        build:
+            args:
+                user: shinaanmohamed
+                uid: 1000
+            context: ./
+            dockerfile: Dockerfile
+        image: auth_server
+        container_name: myvc_php
+        restart: unless-stopped
+        working_dir: /var/www/
+        volumes:
+            - ./:/var/www
+        networks:
+            - myvc_network
+
+    db:
+        image: mysql:latest
+        container_name: myvc_database
+        restart: unless-stopped
+        environment:
+            MYSQL_DATABASE: myvc_database
+            MYSQL_ROOT_PASSWORD: myvc_database
+            MYSQL_USER: myvc_database
+            MYSQL_PASSWORD: myvc_database
+            MYSQL_ALLOW_EMPTY_PASSWORD: 1
+        ports: #no need to expose ports
+            - 13306:3306
+        volumes:
+            - ./.docker-compose/mysql:/docker-entrypoint-initdb.d
+        networks:
+            - myvc_network
+
+    nginx:
+        image: nginx:alpine
+        container_name: myvc_nginx
+        restart: unless-stopped
+        ports:
+            - 8001:80
+        volumes:
+            - ./:/var/www
+            - ./.docker-compose/nginx:/etc/nginx/conf.d/
+        networks:
+            - myvc_network
+
+
+networks:
+    myvc_network:
+        driver: bridge
+
+volumes:
+    redis:
+        driver: "local"
+    mysql-data:
