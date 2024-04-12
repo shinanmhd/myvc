@@ -26,7 +26,7 @@ services:
             MYSQL_USER: myvc_database
             MYSQL_PASSWORD: myvc_database
             MYSQL_ALLOW_EMPTY_PASSWORD: 1
-        ports: #no need to expose ports
+        ports: # ports exposed for access to database in development
             - 13306:3306
         volumes:
             - ./.docker-compose/mysql:/docker-entrypoint-initdb.d
@@ -51,6 +51,4 @@ networks:
         driver: bridge
 
 volumes:
-    redis:
-        driver: "local"
     mysql-data:

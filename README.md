@@ -1,66 +1,62 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## MyVC Portal
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+This repository contains the source code for the MyVC student portal, a web application built using Docker Compose.
+This project was developed by Shinan Mohamed (UWE ID: 24019764) as part of the MScIT program's Digital Design and Development module. 
 
-## About Laravel
+**Features**
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+* **Personalized Dashboard:** Provides students with a quick overview of their academic progress, upcoming deadlines, and important announcements. 
+* **Profile:** View and update users bio data, contacts, emergency contact etc. 
+* **Timetable:** Offers a unified view of classes, exams and other important dates. 
+* **Learning Support:** Allows students to access study materials like journals, library resources, etc. 
+* **Communication:** Enables students to discuss course material with classmates, connect with peers and lecturers through messaging. 
+* **Career Resources:** Provides students with access to job postings, career guidance resources. 
+* **Mobile Optimization:** Ensures a smooth user experience on mobile devices for all functionalities.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+**Technology Stack**
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+* Docker
+* Front-end: HTML, CSS (Tailwind), JavaScript (Alpine.js)
+* Back-end: PHP (Laravel)
+* Database: MySQL
 
-## Learning Laravel
+**Prerequisites**
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+* Docker installed on your system (refer to [https://www.docker.com/products/docker-desktop/](https://www.docker.com/products/docker-desktop/))
+* Docker Compose installed on your system (refer to [https://docs.docker.com/compose/install/](https://docs.docker.com/compose/install/))
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+**Setup Instructions**
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+1. **Clone this repository:**
 
-## Laravel Sponsors
+   ```bash
+   git clone https://github.com/shinanmhd/myvc.git
+   ```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+2. **Create a `.env` file (optional):**
 
-### Premium Partners
+   This file can store sensitive environment variables like database passwords. You can copy the `.env.example` file and adjust the values. Docker Compose will automatically load environment variables from this file.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+3. **Start the application:**
 
-## Contributing
+   Navigate to the project directory and run:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+   ```bash
+   docker-compose up -d
+   ```
 
-## Code of Conduct
+   The `-d` flag tells Docker Compose to run the containers in detached mode, allowing them to run in the background.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+4. **Access the application:**
 
-## Security Vulnerabilities
+   The MyVC portal will be accessible in your web browser at `http://localhost:8001`.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+**Important Notes:**
 
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+* The provided `docker-compose.yml` file configures three services:
+    * `app`: The PHP application container.
+    * `db`: The MySQL database container.
+    * `nginx`: The Nginx web server container.
+* The application code is mounted as a volume (`./:/var/www`) to the `app` container, allowing for live code updates.
+* The MySQL database configuration is included in the `docker-compose.yml` file for simplicity. In a production environment, consider using a dedicated secrets management solution.
+* The `redis` and `mysql-data` volumes are commented out as they are not used in the provided configuration.
