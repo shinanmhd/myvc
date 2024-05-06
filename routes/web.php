@@ -7,6 +7,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', \App\Http\Controllers\DashboardController::class)->name('dashboard');
     Route::get('/timetable', \App\Http\Controllers\TimetableController::class)->name('timetable');
     Route::get('/marks', \App\Http\Controllers\MarksController::class)->name('marks');
+    Route::get('/message', \App\Http\Controllers\MessagingController::class)->name('message');
 
     Route::get('/profile/personal', [\App\Http\Controllers\ProfileController::class, 'edit'])->name('profile.edit');
     Route::get('/profile/academic', [\App\Http\Controllers\ProfileController::class, 'edit'])->name('profile.edit.academic');

@@ -25,12 +25,12 @@
                     </svg>
                 </button>
 
-                <button type="button" class="-m-2.5 p-2.5 text-gray-400 hover:text-gray-500">
+                <a href="{{ route('message') }}" class="-m-2.5 p-2.5 text-gray-400 hover:text-gray-500">
                     <span class="sr-only">View messages</span>
                     <svg class="h-5 w-5" width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M21.25 14.5C21.25 15.0967 21.0129 15.669 20.591 16.091C20.169 16.5129 19.5967 16.75 19 16.75H5.5L1 21.25V3.25C1 2.65326 1.23705 2.08097 1.65901 1.65901C2.08097 1.23705 2.65326 1 3.25 1H19C19.5967 1 20.169 1.23705 20.591 1.65901C21.0129 2.08097 21.25 2.65326 21.25 3.25V14.5Z" stroke="#B5B5BE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
-                </button>
+                </a>
 
                 <!-- Separator -->
                 <div class="hidden lg:block lg:h-6 lg:w-px lg:bg-gray-200" aria-hidden="true"></div>
