@@ -48,4 +48,16 @@ RUN mkdir -p /home/$user/.composer && \
 # Set working directory
 WORKDIR /var/www
 
+# Copy project files
+COPY . .
+
+# Install dependencies
+RUN composer install
+
+# (optional) Set permissions
+RUN chown -R $user:$user /var/www
+
+# Run migrations
+#RUN php artisan migrate
+
 USER $user

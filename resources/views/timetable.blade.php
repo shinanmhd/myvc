@@ -1,6 +1,14 @@
 <x-app-layout>
     @push('styles')
         <link rel="stylesheet" href="https://uicdn.toast.com/calendar/latest/toastui-calendar.min.css" />
+        <style>
+            .tui-calendar-event-title {
+                white-space: pre-wrap !important; /* Prevent initial text wrapping */
+                overflow: hidden !important; /* Hide overflowing content */
+                text-overflow: ellipsis !important; /* Add ellipsis (...) for overflowing text */
+                max-width: 90% !important; /* Set a maximum width for the title */
+            }
+        </style>
     @endpush
 
     <x-slot name="page_heading">
@@ -87,107 +95,102 @@
         </div>
     </div>
 
-    <script type="application/javascript">
-        document.addEventListener("DOMContentLoaded", () => {
+    @push('scripts')
+        <script type="application/javascript">
+                document.addEventListener("DOMContentLoaded", () => {
 
-            const container = document.getElementById('calendar');
-            const options = {
-                usageStatistics: false,
-                defaultView: 'week',
-                week: {
-                    eventView: ['time'],
-                    taskView: false,
-                },
-                startTime: 6,
-                template: {
-                    time(event) {
-                        const { start, end, title } = event;
-                        return `<div class="tui-calendar-event-title flex flex-col gap-y-1 p-2" style="color: #ffffff;">
+                    const container = document.getElementById('calendar');
+                    const options = {
+                        usageStatistics: false,
+                        defaultView: 'week',
+                        week: {
+                            eventView: ['time'],
+                            taskView: false,
+                        },
+                        startTime: 6,
+                        template: {
+                            time(event) {
+                                const { start, end, title } = event;
+                                return `<div class="tui-calendar-event-title flex flex-col gap-y-1 p-2" style="color: #ffffff;">
                                     <b class="text-lg font-normal">${formatTime(start)} - ${formatTime(end)}</b>
                                     <p class="flex flex-wrap font-light leading-tight">${title}</p>
                                 </div>`;
-                    },
-                },
-                timezone: {
-                    zones: [
-                        {
-                            timezoneName: 'Asia/Karachi',
-                            displayLabel: 'Maldives',
+                            },
                         },
-                    ],
-                },
-                calendars: [
-                    {
-                        id: 'cal1',
-                        name: 'Classes',
-                        backgroundColor: 'rgb(4,83,224)',
-                        dragBackgroundColor: 'rgba(4,83,224, 0.9)',
-                        borderColor: 'rgba(4,83,224, 0.9)',
-                        textColor: '#FFFFFF'
+                        timezone: {
+                            zones: [
+                                {
+                                    timezoneName: 'Asia/Karachi',
+                                    displayLabel: 'Maldives',
+                                },
+                            ],
+                        },
+                        calendars: [
+                            {
+                                id: 'cal1',
+                                name: 'Classes',
+                                backgroundColor: 'rgb(4,83,224)',
+                                dragBackgroundColor: 'rgba(4,83,224, 0.9)',
+                                borderColor: 'rgba(4,83,224, 0.9)',
+                                textColor: '#FFFFFF'
+                            }
+                        ],
+                    };
+
+                    const calendar = new window.Calendar(container, options);
+
+
+                    calendar.createEvents([
+                        {
+                            id: 'event1',
+                            calendarId: 'cal1',
+                            title: 'Professionalism and Governance In IT',
+                            subtitle: 'this',
+                            start: '2024-04-13T10:00:00',
+                            end: '2024-04-13T12:00:00',
+                        },
+                        {
+                            id: 'event2',
+                            calendarId: 'cal1',
+                            title: 'Information Security',
+                            start: '2024-04-13T13:00:00',
+                            end: '2024-04-13T15:00:00',
+                        },
+                        {
+                            id: 'event3',
+                            calendarId: 'cal1',
+                            title: 'Project Management',
+                            start: '2024-04-13T16:00:00',
+                            end: '2024-04-13T18:00:00',
+                        },
+                        {
+                            id: 'event4',
+                            calendarId: 'cal1',
+                            title: 'Digital Design and Development',
+                            start: '2024-04-13T19:00:00',
+                            end: '2024-04-13T21:00:00',
+                        },
+                    ]);
+
+
+                    calendar.setTheme({
+                        common: {
+                            gridSelection: {
+                                backgroundColor: 'rgba(81, 230, 92, 0.05)',
+                                border: '1px dotted #515ce6',
+                            },
+                        },
+                    });
+
+                    function formatTime(time) {
+                        const hours = `${time.getHours()}`.padStart(2, '0');
+                        const minutes = `${time.getMinutes()}`.padStart(2, '0');
+
+                        return `${hours}:${minutes}`;
                     }
-                ],
-            };
+                });
+        </script>
+    @endpush
 
-            const calendar = new window.Calendar(container, options);
-
-
-            calendar.createEvents([
-                {
-                    id: 'event1',
-                    calendarId: 'cal1',
-                    title: 'Professionalism and Governance In IT',
-                    subtitle: 'this',
-                    start: '2024-04-13T10:00:00',
-                    end: '2024-04-13T12:00:00',
-                },
-                {
-                    id: 'event2',
-                    calendarId: 'cal1',
-                    title: 'Information Security',
-                    start: '2024-04-13T13:00:00',
-                    end: '2024-04-13T15:00:00',
-                },
-                {
-                    id: 'event3',
-                    calendarId: 'cal1',
-                    title: 'Project Management',
-                    start: '2024-04-13T16:00:00',
-                    end: '2024-04-13T18:00:00',
-                },
-                {
-                    id: 'event4',
-                    calendarId: 'cal1',
-                    title: 'Digital Design and Development',
-                    start: '2024-04-13T19:00:00',
-                    end: '2024-04-13T21:00:00',
-                },
-            ]);
-
-
-            calendar.setTheme({
-                common: {
-                    gridSelection: {
-                        backgroundColor: 'rgba(81, 230, 92, 0.05)',
-                        border: '1px dotted #515ce6',
-                    },
-                },
-            });
-
-            function formatTime(time) {
-                const hours = `${time.getHours()}`.padStart(2, '0');
-                const minutes = `${time.getMinutes()}`.padStart(2, '0');
-
-                return `${hours}:${minutes}`;
-            }
-        });
-    </script>
-        <style>
-            .tui-calendar-event-title {
-                white-space: pre-wrap !important; /* Prevent initial text wrapping */
-                overflow: hidden !important; /* Hide overflowing content */
-                text-overflow: ellipsis !important; /* Add ellipsis (...) for overflowing text */
-                max-width: 90% !important; /* Set a maximum width for the title */
-            }
-        </style>
 
 </x-app-layout>

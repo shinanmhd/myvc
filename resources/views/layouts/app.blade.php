@@ -35,4 +35,5 @@
 
     @livewireScripts
     <wireui:scripts />
+    @stack('scripts')
 </html>
