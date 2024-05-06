@@ -192,7 +192,7 @@
                                 Marks
                             </a>
                         </li>
-                        <li>
+                        {{--<li>
                             <a href="{{ route('profile.edit') }}" wire:navigate
                                class="pl-6 group flex items-center gap-x-3 rounded-r-full p-2 text-sm leading-6 font-semibold cursor-pointer text-gray-400 hover:text-blue-600 hover:bg-gray-50">
                                 <svg class="h-6 w-6 shrink-0 group-hover:text-blue-600" viewBox="0 0 23 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -211,7 +211,7 @@
                                 </svg>
                                 Job Portal
                             </a>
-                        </li>
+                        </li>--}}
 
                     </ul>
                 </li>
