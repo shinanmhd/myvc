@@ -13,7 +13,7 @@
         <div class="flex flex-1 gap-x-4 py-2 self-stretch lg:gap-x-6 px-4 sm:px-6 lg:px-8">
 
             <div class="relative flex flex-1 items-center justify-end">
-                asd
+                &nbsp;
                 <div class="hidden lg:block lg:h-6 lg:w-px lg:bg-gray-200 ml-0 lg:ml-6" aria-hidden="true"></div>
             </div>
 
